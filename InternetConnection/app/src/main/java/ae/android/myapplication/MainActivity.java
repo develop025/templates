@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        boolean isNetworkConnected = isNetworkConnected();
-                        boolean isInternetAvailable = isInternetAvailable();
-                        Log.d(TAG, "isNetworkConnected:" + isNetworkConnected + ". isInternetAvailable:" + isInternetAvailable);
-                        if (isNetworkConnected && isInternetAvailable) {
-                            boolean connectGoogle = connectGoogle();
+//                        boolean isNetworkConnected = isNetworkConnected();
+//                        boolean isInternetAvailable = isInternetAvailable();
+//                        Log.d(TAG, "isNetworkConnected:" + isNetworkConnected + ". isInternetAvailable:" + isInternetAvailable);
+//                        if (isNetworkConnected && isInternetAvailable) {
+                            boolean connectGoogle = checkConnect();
                             Log.d(TAG, "connectGoogle:" + connectGoogle);
-                        }
+//                        }
                     }
                 }).start();
             }
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static boolean connectGoogle() {
+    public static boolean checkConnect() {
         try {
             HttpURLConnection urlc = (HttpURLConnection) (new URL("https://www.google.com").openConnection());
             urlc.setRequestProperty("User-Agent", "Test");
