@@ -89,10 +89,14 @@ public class MainActivity extends AppCompatActivity {
             urlc.setRequestProperty("User-Agent", "Test");
             urlc.setRequestProperty("Connection", "close");
             urlc.setConnectTimeout(10000);
+            urlc.setReadTimeout(5000);
             urlc.connect();
             return (urlc.getResponseCode() == 200);
         } catch (IOException e) {
             Log.d(TAG, "connectGoogle. IOException:" + e.getMessage());
+            return false;
+        } catch (Exception e) {
+            Log.d(TAG, "connectGoogle. Exception:" + e.getMessage());
             return false;
         }
     }
